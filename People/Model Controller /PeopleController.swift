@@ -18,14 +18,6 @@ class PeopleController {
             peopleArray.append($0)
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     
