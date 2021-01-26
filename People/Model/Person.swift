@@ -9,10 +9,20 @@ import Foundation
 
 //
 class Person {
-    let name: String
+    let name = "full name"
+    let email: String
+    let phone: String
+    
+//    let name: String
     var isFavorite = false
     
-    init(name: String) {
-        self.name = name
+    init(email: String, phone: String) {
+        self.email = email
+        self.phone = phone
+    }
+    
+    convenience init(peronRep: PersonRep) {
+        self.init(email: peronRep.email, phone: peronRep.phone)
+    
     }
 }

@@ -15,9 +15,7 @@ class DetailViewController: UIViewController {
     var delegate: DetailViewControllerProtocol?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
-    
-    let heartSystemImage = "heart"
-    
+    @IBOutlet weak var emailLabel: UILabel!
     
     //MARK: - PROPERTIES
     var person: Person!
@@ -33,6 +31,8 @@ class DetailViewController: UIViewController {
         nameLabel.text = person.name
         
         setFavoriteButton(person.isFavorite)
+        
+        emailLabel.text = person.email
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
@@ -43,20 +43,8 @@ class DetailViewController: UIViewController {
      }
     
     func setFavoriteButton(_ isFavorite: Bool) {
-//        var imageName = heartSystemImage
-//
-//        if isFavorite == true  {
-//           // imageName = imageName + ".fill"
-//            imageName += ".fill"
-//        } else {
-//            imagename = heartImage
-//            }
-        
-        var imageName = isFavorite ? heartSystemImage + ".fill" : heartSystemImage
-        
-        
-        let heartImage = UIImage(systemName: imageName)
-        favoriteButton.setImage(heartImage, for: .normal)
+        let image = UIImage.fetchFavoriteUIImage(isFavorite: isFavorite)
+        favoriteButton.setImage(image, for: .normal)
     }
     
  
