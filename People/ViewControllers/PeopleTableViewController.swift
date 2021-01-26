@@ -12,9 +12,17 @@ class PeopleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        peopleController = PeopleController()
         
+        peopleController = PeopleController()
+        peopleController.fetch { error in
+            if let error = error {
+                print(error)
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -24,16 +32,12 @@ class PeopleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath) as!  PersonTableViewCell
         
         let person = peopleController.peopleArray[indexPath.row]
-        if person.isFavorite {
-            cell.accessoryType = .checkmark
-         } else {
-            cell.accessoryType = .none
-          }
+        cell.person = person
+        
 
-        cell.textLabel?.text = person.name
         
         return cell
     }
