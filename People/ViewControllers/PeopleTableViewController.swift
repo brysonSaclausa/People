@@ -12,8 +12,8 @@ class PeopleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         peopleController = PeopleController()
+        
         peopleController.fetch { error in
             if let error = error {
                 print(error)
@@ -22,7 +22,7 @@ class PeopleTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        }//
     }
 
     // MARK: - Table view data source
@@ -36,6 +36,7 @@ class PeopleTableViewController: UITableViewController {
         
         let person = peopleController.peopleArray[indexPath.row]
         cell.person = person
+        
         
 
         

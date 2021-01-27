@@ -29,7 +29,35 @@ class PersonTableViewCell: UITableViewCell {
         nameLabel.text = person.name
         
         setFavoriteButton(person.isFavorite)
+        
+        if let image = person.thumbnailImage {
+            iconImage.image = image
+        } else {
+            fetchThumbnailImage(url: person.thumbnailURL)
+        }
     }
+    
+    func fetchThumbnailImage(url: URL) {
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print(error)
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                self.person!.thumbnailImage = image
+                self.iconImage!.image = image
+            }
+            
+        }
+        .resume()
+    }
+    
     
     
     @IBAction func likeButtonTapped(_ sender: Any) {
