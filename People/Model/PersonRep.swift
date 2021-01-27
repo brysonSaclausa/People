@@ -15,12 +15,10 @@ struct PersonRep: Codable {
     var phone: String
     var email: String
     
-//    var title: String
-//    var first: String
-//    var last: String
-//
-//    var thumbnail: String
-//    var medium: String
+    var name: String
+
+    var thumbnail: String
+    var medium: String
     
     enum RandomUserTopLevelCodingKeys: String, CodingKey {
         case name
@@ -50,17 +48,17 @@ struct PersonRep: Codable {
         phone = try container.decode(String.self, forKey: .phone)
         email = try container.decode(String.self, forKey: .email)
 
-//        let nameContainer = try container.nestedContainer(keyedBy: RandomUserTopLevelCodingKeys.NameKeys.self, forKey: .name)
-//        first = try nameContainer.decode(String.self, forKey: .first)
-//        last = try nameContainer.decode(String.self, forKey: .last)
-//
-//        let pictureContainer = try container.nestedContainer(keyedBy: RandomUserTopLevelCodingKeys.PictureKeys.self, forKey: .picture)
-//        thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
-//        medium = try pictureContainer.decode(String.self, forKey: .medium)
-//
-        
-        
+        let nameContainer = try container.nestedContainer(keyedBy: RandomUserTopLevelCodingKeys.NameKeys.self, forKey: .name)
+        let title = try nameContainer.decode(String.self, forKey: .title)
+        let first = try nameContainer.decode(String.self, forKey: .first)
+        let last = try nameContainer.decode(String.self, forKey: .last)
 
+        name = "\(title). \(first) \(last)"
+        
+        let pictureContainer = try container.nestedContainer(keyedBy: RandomUserTopLevelCodingKeys.PictureKeys.self, forKey: .picture)
+        
+        thumbnail = try pictureContainer.decode(String.self, forKey: .thumbnail)
+        medium = try pictureContainer.decode(String.self, forKey: .medium)
      }
 }
 

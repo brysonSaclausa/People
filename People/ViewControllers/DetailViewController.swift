@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var phoneLabel: UILabel!
     
     //MARK: - PROPERTIES
     var person: Person!
@@ -29,10 +31,17 @@ class DetailViewController: UIViewController {
     func configureViews() {
         guard let person = person else { return }
         nameLabel.text = person.name
+        phoneLabel.text = person.phone
         
         setFavoriteButton(person.isFavorite)
         
         emailLabel.text = person.email
+        
+        if let image = person.mediumImage {
+            imageView.image = image
+        } else {
+            fetchImage(url: person.mediumURL)
+        }
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
@@ -47,6 +56,27 @@ class DetailViewController: UIViewController {
         favoriteButton.setImage(image, for: .normal)
     }
     
- 
-
+    func fetchImage(url: URL) {
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print(error)
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                self.person.mediumImage = image
+                self.imageView.image = image
+            }
+            
+        }
+        .resume()
+    }
+        
 }
+    
+

@@ -80,47 +80,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seJ-n4-bEh">
-                                <rect key="frame" x="16" y="156" width="382" height="21"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnF-9i-df1">
-                                <rect key="frame" x="16" y="193" width="382" height="22"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <color key="tintColor" systemColor="systemRedColor"/>
-                                <state key="normal" image="heart" catalog="system"/>
-                                <connections>
-                                    <action selector="favoriteButtonTapped:" destination="Mhy-6v-2g8" eventType="touchUpInside" id="Jf7-IL-vVD"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EmailLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKG-NJ-wra">
-                                <rect key="frame" x="16" y="223" width="382" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DBa-21-lZW">
+                                <rect key="frame" x="8" y="148" width="398" height="315.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RQI-Eg-jl0">
+                                        <rect key="frame" x="79" y="0.0" width="240" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="9qL-5o-FYa"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seJ-n4-bEh">
+                                        <rect key="frame" x="156" y="208" width="86.5" height="20.5"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnF-9i-df1">
+                                        <rect key="frame" x="189" y="236.5" width="20.5" height="22"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" image="heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="favoriteButtonTapped:" destination="Mhy-6v-2g8" eventType="touchUpInside" id="Jf7-IL-vVD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmailLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKG-NJ-wra">
+                                        <rect key="frame" x="158" y="266.5" width="82" height="20.5"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6K-yG-ije">
+                                        <rect key="frame" x="175" y="295" width="48.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bAs-84-fZd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UnF-9i-df1" firstAttribute="leading" secondItem="bAs-84-fZd" secondAttribute="leading" constant="16" id="FE2-j8-hnc"/>
-                            <constraint firstItem="bAs-84-fZd" firstAttribute="trailing" secondItem="UnF-9i-df1" secondAttribute="trailing" constant="16" id="Fn4-Cz-Cib"/>
-                            <constraint firstItem="seJ-n4-bEh" firstAttribute="top" secondItem="bAs-84-fZd" secondAttribute="top" constant="16" id="PkW-hN-apg"/>
-                            <constraint firstItem="seJ-n4-bEh" firstAttribute="leading" secondItem="bAs-84-fZd" secondAttribute="leading" constant="16" id="S5k-bT-ifh"/>
-                            <constraint firstItem="UnF-9i-df1" firstAttribute="top" secondItem="seJ-n4-bEh" secondAttribute="bottom" constant="16" id="X8N-wP-A9V"/>
-                            <constraint firstItem="bAs-84-fZd" firstAttribute="trailing" secondItem="seJ-n4-bEh" secondAttribute="trailing" constant="16" id="zmJ-pq-CfI"/>
+                            <constraint firstItem="bAs-84-fZd" firstAttribute="trailing" secondItem="DBa-21-lZW" secondAttribute="trailing" constant="8" id="7vV-UK-WG0"/>
+                            <constraint firstItem="DBa-21-lZW" firstAttribute="top" secondItem="bAs-84-fZd" secondAttribute="top" constant="8" id="g8D-gg-7jy"/>
+                            <constraint firstItem="DBa-21-lZW" firstAttribute="leading" secondItem="bAs-84-fZd" secondAttribute="leading" constant="8" id="i5M-pB-DNX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rOQ-M8-prj"/>
                     <connections>
                         <outlet property="emailLabel" destination="ZKG-NJ-wra" id="WdH-UT-9UN"/>
                         <outlet property="favoriteButton" destination="UnF-9i-df1" id="G3d-me-Ea2"/>
+                        <outlet property="imageView" destination="RQI-Eg-jl0" id="rb3-xU-6yO"/>
                         <outlet property="nameLabel" destination="seJ-n4-bEh" id="hpo-Nm-FTN"/>
+                        <outlet property="phoneLabel" destination="a6K-yG-ije" id="qb8-2a-LKH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iqf-9m-gy8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

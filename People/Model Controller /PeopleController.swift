@@ -41,16 +41,18 @@ class PeopleController {
             
             do {
                 let results = try JSONDecoder().decode(UserResults.self, from: data)
+                
                 let peopleRepList = results.results
+                
                 for personRep in peopleRepList {
                     let person = Person(peronRep: personRep)
                     self.peopleArray.append(person)
                 }
+                
+                completion(nil)
             } catch {
                 completion(error)
             }
-            
-            completion(nil)
         }
         .resume()
     }
