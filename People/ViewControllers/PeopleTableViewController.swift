@@ -10,10 +10,19 @@ import UIKit
 class PeopleTableViewController: UITableViewController {
     var peopleController: PeopleController! = nil
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchPeople()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         peopleController = PeopleController()
         
+        
+    }
+    
+    func fetchPeople() {
         peopleController.fetch { error in
             if let error = error {
                 print(error)
@@ -69,7 +78,7 @@ extension PeopleTableViewController: DetailViewControllerProtocol {
             self.tableView.reloadData()
         }
     }
-    
-   
+
+
 
 }

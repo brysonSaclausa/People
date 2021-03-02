@@ -15,9 +15,6 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    
-    
-
     var person: Person? {
         didSet {
             configureView()
@@ -38,6 +35,7 @@ class PersonTableViewCell: UITableViewCell {
     }
     
     func fetchThumbnailImage(url: URL) {
+        
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 print(error)
@@ -54,11 +52,11 @@ class PersonTableViewCell: UITableViewCell {
                 self.iconImage!.image = image
             }
             
+//                self.person!.thumbnailImage = image
+//                self.iconImage!.image = image
         }
         .resume()
     }
-    
-    
     
     @IBAction func likeButtonTapped(_ sender: Any) {
         person?.isFavorite.toggle()
@@ -70,6 +68,4 @@ class PersonTableViewCell: UITableViewCell {
         let image = UIImage.fetchFavoriteUIImage(isFavorite: isFavorite)
         favoriteButton.setImage(image, for: .normal)
     }
-    
-
 }

@@ -48,7 +48,6 @@ class PeopleController {
                     let person = Person(peronRep: personRep)
                     self.peopleArray.append(person)
                 }
-                
                 completion(nil)
             } catch {
                 completion(error)
@@ -56,6 +55,8 @@ class PeopleController {
         }
         .resume()
     }
+    
+    
     
     
 }
